@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="بازرگانی صالحی - فروش انواع قطعات یدکی لوازم خانگی برقی با بهترین قیمت و کیفیت اصلی">
-    <meta name="keywords" content="قطعات لوازم خانگی, سشوار, مگنترون, موتور خردکن, تیغه مخلوط کن, ترموستات, اتو, گوشت کوب برقی, بازرگانی صالحی">
-    <meta name="author" content="فرزانه صالحی">
+    <meta name="description" content="Ø¨Ø§Ø²Ø±Ú¯Ø§Ù†ÛŒ ØµØ§Ù„Ø­ÛŒ - ÙØ±ÙˆØ´ Ø§Ù†ÙˆØ§Ø¹ Ù‚Ø·Ø¹Ø§Øª ÛŒØ¯Ú©ÛŒ Ù„ÙˆØ§Ø²Ù… Ø®Ø§Ù†Ú¯ÛŒ Ø¨Ø±Ù‚ÛŒ Ø¨Ø§ Ø¨Ù‡ØªØ±ÛŒÙ† Ù‚ÛŒÙ…Øª Ùˆ Ú©ÛŒÙÛŒØª Ø§ØµÙ„ÛŒ">
+    <meta name="keywords" content="Ù‚Ø·Ø¹Ø§Øª Ù„ÙˆØ§Ø²Ù… Ø®Ø§Ù†Ú¯ÛŒ, Ø³Ø´ÙˆØ§Ø±, Ù…Ú¯Ù†ØªØ±ÙˆÙ†, Ù…ÙˆØªÙˆØ± Ø®Ø±Ø¯Ú©Ù†, ØªÛŒØºÙ‡ Ù…Ø®Ù„ÙˆØ· Ú©Ù†, ØªØ±Ù…ÙˆØ³ØªØ§Øª, Ø§ØªÙˆ, Ú¯ÙˆØ´Øª Ú©ÙˆØ¨ Ø¨Ø±Ù‚ÛŒ, Ø¨Ø§Ø²Ø±Ú¯Ø§Ù†ÛŒ ØµØ§Ù„Ø­ÛŒ">
+    <meta name="author" content="ÙØ±Ø²Ø§Ù†Ù‡ ØµØ§Ù„Ø­ÛŒ">
     <meta name="robots" content="index, follow">
-    
-    <title>بازرگانی صالحی - فروش انواع قطعات لوازم خانگی برقی</title>
-    
-    <!-- Favicon آبی رنگ -->
+    <title>Ø¨Ø§Ø²Ø±Ú¯Ø§Ù†ÛŒ ØµØ§Ù„Ø­ÛŒ - ÙØ±ÙˆØ´ Ø§Ù†ÙˆØ§Ø¹ Ù‚Ø·Ø¹Ø§Øª Ù„ÙˆØ§Ø²Ù… Ø®Ø§Ù†Ú¯ÛŒ Ø¨Ø±Ù‚ÛŒ</title>
     <link rel="icon" href="https://s6.uupload.ir/files/blue-favicon_5g9k.png" type="image/png">
     
     <style>
@@ -22,83 +19,120 @@
             transition: all 0.4s ease;
             line-height: 1.6;
         }
-        body.dark-mode {
+        body.dark {
             background: #121212;
             color: #e0e0e0;
         }
-
         header {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
             text-align: center;
             padding: 40px 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        header h1 {
-            font-size: 3.2rem;
+        h1 {
+            font-size: 3.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
         }
-        header p {
-            font-size: 1.5rem;
+        .subtitle {
+            font-size: 1.6rem;
             opacity: 0.95;
         }
-
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 40px auto;
             padding: 0 20px;
         }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 25px;
-            margin-top: 30px;
+            padding: 20px 0;
         }
-
         .product-card {
             background: #fff;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
             text-align: center;
         }
-        body.dark-mode .product-card {
-            background: #1e1e1e;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.3);
+            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.25);
         }
-
-        .product-img {
+        body.dark .product-card {
+            background: #1e1e1e;
+        }
+        .product-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             border-bottom: 4px solid #6a11cb;
         }
-
-        .product-title {
-            padding: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #333;
-        }
-        body.dark-mode .product-title { color: #fff; }
-
         .price {
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6a11cb;
+            background: #f8f5ff;
+        }
+        body.dark .price {
+            background: #2a1b3d;
+            color: #bb86fc;
+        }
+
+        /* Ù…ÙˆØ¯Ø§Ù„ ØªÙ…Ø§Ù… ØµÙØ­Ù‡ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.97);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            max-width: 90%;
+            max-height: 95vh;
+            text-align: center;
+            position: relative;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(106,17,203,0.6);
+        }
+        .modal-info {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: white;
+            background: rgba(106,17,203,0.9);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             background: #6a11cb;
             color: white;
-            padding: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
         }
 
-        /* آیکون‌های ثابت پایین صفحه */
+        /* Ø¯Ú©Ù…Ù‡â€ŒÙ‡Ø§ÛŒ Ø´Ù†Ø§ÙˆØ± */
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -108,7 +142,6 @@
             gap: 15px;
             z-index: 1000;
         }
-
         .float-btn {
             width: 60px;
             height: 60px;
@@ -119,19 +152,19 @@
             justify-content: center;
             box-shadow: 0 6px 20px rgba(106, 17, 203, 0.5);
             transition: all 0.3s ease;
+            overflow: hidden; /* Ù…Ù‡Ù… Ø¨Ø±Ø§ÛŒ Ù¾Ø± Ú©Ø±Ø¯Ù† Ú©Ø§Ù…Ù„ */
         }
-
         .float-btn:hover {
             transform: scale(1.15);
             box-shadow: 0 10px 30px rgba(106, 17, 203, 0.7);
         }
-
         .float-btn img {
-            width: 34px;
-            height: 34px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ø¨Ø§Ø¹Ø« Ù…ÛŒØ´Ù‡ ØªØµÙˆÛŒØ± Ú©Ø§Ù…Ù„ Ø¯Ø§ÛŒØ±Ù‡ Ø±Ùˆ Ù¾Ø± Ú©Ù†Ù‡ */
         }
 
-        /* پنل تغییر تم */
+        /* Ø¢ÛŒÚ©ÙˆÙ† ØªØºÛŒÛŒØ± ØªÙ… */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -139,18 +172,16 @@
             z-index: 1001;
             cursor: pointer;
         }
-
         .theme-toggle img {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(106,17,203,0.5);
+            transition: all 0.4s;
         }
-
-        .theme-toggle:hover img {
-            transform: scale(1.1);
+        .theme-toggle img.on {
+            filter: brightness(1.8) drop-shadow(0 0 20px #fff);
         }
 
         footer {
@@ -159,150 +190,150 @@
             background: #111;
             color: white;
             font-size: 0.9rem;
-            margin-top: 80px;
+            margin-top: 60px;
         }
+        body.dark footer { background: #000; }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            header p { font-size: 1.3rem; }
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.3rem; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+            .float-btn { width: 55px; height: 55px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- تغییر تم (لامپ) -->
     <div class="theme-toggle">
-        <img src="https://s6.uupload.ir/files/inshot_20251121_164428011_rdup.jpg" alt="تغییر تم" id="themeIcon">
+        <img src="https://s6.uupload.ir/files/inshot_20251121_164428011_rdup.jpg" alt="ØªØºÛŒÛŒØ± ØªÙ…" id="themeIcon">
     </div>
 
     <header>
-        <h1>بازرگانی صالحی</h1>
-        <p>فروش انواع قطعات لوازم خانگی برقی</p>
+        <h1>Ø¨Ø§Ø²Ø±Ú¯Ø§Ù†ÛŒ ØµØ§Ù„Ø­ÛŒ</h1>
+        <p class="subtitle">ÙØ±ÙˆØ´ Ø§Ù†ÙˆØ§Ø¹ Ù‚Ø·Ø¹Ø§Øª Ù„ÙˆØ§Ø²Ù… Ø®Ø§Ù†Ú¯ÛŒ Ø¨Ø±Ù‚ÛŒ</p>
     </header>
 
     <div class="container">
         <div class="products-grid">
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/14_yw0l.jpg" alt="سشوار" class="product-img">
-                <div class="product-title">سشوار حرفه‌ای</div>
-                <div class="price">۹۸۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ø³Ø´ÙˆØ§Ø±', 'https://s6.uupload.ir/files/14_yw0l.jpg', 'Ù‚ÛŒÙ…Øª Ø³Ø´ÙˆØ§Ø±: Û¹Û¸Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/14_yw0l.jpg" alt="Ø³Ø´ÙˆØ§Ø±">
+                <div class="price">Û¹Û¸Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/15_n3sm.jpg" alt="موتور خردکن" class="product-img">
-                <div class="product-title">موتور خردکن</div>
-                <div class="price">۴۵۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ù…ÙˆØªÙˆØ± Ø®Ø±Ø¯Ú©Ù†', 'https://s6.uupload.ir/files/15_n3sm.jpg', 'Ù‚ÛŒÙ…Øª Ù…ÙˆØªÙˆØ± Ø®Ø±Ø¯Ú©Ù†: Û´ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/15_n3sm.jpg" alt="Ù…ÙˆØªÙˆØ± Ø®Ø±Ø¯Ú©Ù†">
+                <div class="price">Û´ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/13_r3ud.jpg" alt="کلید استریکس" class="product-img">
-                <div class="product-title">کلید استریکس</div>
-                <div class="price">۲۰۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ú©Ù„ÛŒØ¯ Ø§Ø³ØªØ±ÛŒÚ©Ø³', 'https://s6.uupload.ir/files/13_r3ud.jpg', 'Ù‚ÛŒÙ…Øª Ú©Ù„ÛŒØ¯ Ø§Ø³ØªØ±ÛŒÚ©Ø³: Û²Û°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/13_r3ud.jpg" alt="Ú©Ù„ÛŒØ¯ Ø§Ø³ØªØ±ÛŒÚ©Ø³">
+                <div class="price">Û²Û°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/12_524c.jpg" alt="ترموستات و کنتاکت استریکس" class="product-img">
-                <div class="product-title">ترموستات و کنتاکت استریکس</div>
-                <div class="price">۵۰۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('ØªØ±Ù…ÙˆØ³ØªØ§Øª Ùˆ Ú©Ù†ØªØ§Ú©Øª Ø§Ø³ØªØ±ÛŒÚ©Ø³', 'https://s6.uupload.ir/files/12_524c.jpg', 'Ù‚ÛŒÙ…Øª ØªØ±Ù…ÙˆØ³ØªØ§Øª Ùˆ Ú©Ù†ØªØ§Ú©Øª Ø§Ø³ØªØ±ÛŒÚ©Ø³: ÛµÛ°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/12_524c.jpg" alt="ØªØ±Ù…ÙˆØ³ØªØ§Øª Ø§Ø³ØªØ±ÛŒÚ©Ø³">
+                <div class="price">ÛµÛ°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/11_d49l.jpg" alt="مگنترون پاناسونیک" class="product-img">
-                <div class="product-title">مگنترون اصلی پاناسونیک</div>
-                <div class="price">۵,۸۰۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ù…Ú¯Ù†ØªØ±ÙˆÙ† Ø§ØµÙ„ÛŒ Ù¾Ø§Ù†Ø§Ø³ÙˆÙ†ÛŒÚ©', 'https://s6.uupload.ir/files/11_d49l.jpg', 'Ù‚ÛŒÙ…Øª Ù…Ú¯Ù†ØªØ±ÙˆÙ† Ø§ØµÙ„ÛŒ Ù¾Ø§Ù†Ø§Ø³ÙˆÙ†ÛŒÚ©: Ûµ,Û¸Û°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/11_d49l.jpg" alt="Ù…Ú¯Ù†ØªØ±ÙˆÙ† Ù¾Ø§Ù†Ø§Ø³ÙˆÙ†ÛŒÚ©">
+                <div class="price">Ûµ,Û¸Û°Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/10_ql1v.jpg" alt="تیغه چهار پر" class="product-img">
-                <div class="product-title">تیغه چهار پر</div>
-                <div class="price">۱۳۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('ØªÛŒØºÙ‡ Ú†Ù‡Ø§Ø± Ù¾Ø±', 'https://s6.uupload.ir/files/10_ql1v.jpg', 'Ù‚ÛŒÙ…Øª ØªÛŒØºÙ‡ Ú†Ù‡Ø§Ø± Ù¾Ø±: Û±Û³Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/10_ql1v.jpg" alt="ØªÛŒØºÙ‡ Ú†Ù‡Ø§Ø± Ù¾Ø±">
+                <div class="price">Û±Û³Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/9_q5xl.jpg" alt="باد جمع کن سشوار" class="product-img">
-                <div class="product-title">باد جمع کن سشوار</div>
-                <div class="price">۳۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ø¨Ø§Ø¯ Ø¬Ù…Ø¹ Ú©Ù† Ø³Ø´ÙˆØ§Ø±', 'https://s6.uupload.ir/files/9_q5xl.jpg', 'Ù‚ÛŒÙ…Øª Ø¨Ø§Ø¯ Ø¬Ù…Ø¹ Ú©Ù† Ø³Ø´ÙˆØ§Ø±: Û³Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/9_q5xl.jpg" alt="Ø¨Ø§Ø¯ Ø¬Ù…Ø¹ Ú©Ù† Ø³Ø´ÙˆØ§Ø±">
+                <div class="price">Û³Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/8_uzl.jpg" alt="تیغه شش پر" class="product-img">
-                <div class="product-title">تیغه شش پر</div>
-                <div class="price">۱۵۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('ØªÛŒØºÙ‡ Ø´Ø´ Ù¾Ø±', 'https://s6.uupload.ir/files/8_uzl.jpg', 'Ù‚ÛŒÙ…Øª ØªÛŒØºÙ‡ Ø´Ø´ Ù¾Ø±: Û±ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/8_uzl.jpg" alt="ØªÛŒØºÙ‡ Ø´Ø´ Ù¾Ø±">
+                <div class="price">Û±ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/7_j4lo.jpg" alt="مخلوط کن صنعتی" class="product-img">
-                <div class="product-title">مخلوط کن صنعتی (دو پارچ)</div>
-                <div class="price">۱,۷۵۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ù…Ø®Ù„ÙˆØ· Ú©Ù† ØµÙ†Ø¹ØªÛŒ Ø¨Ø§ Ø¯Ùˆ Ù¾Ø§Ø±Ú†', 'https://s6.uupload.ir/files/7_j4lo.jpg', 'Ù…Ø®Ù„ÙˆØ· Ú©Ù† ØµÙ†Ø¹ØªÛŒ Ø¨Ø§ Ø¯Ùˆ Ù¾Ø§Ø±Ú† Ù…Ø¬Ø²Ø§ Ùˆ Ù…ÙˆØªÙˆØ± Ù¾Ø±Ù‚Ø¯Ø±Øª<br>Ù‚ÛŒÙ…Øª: Û±,Û·ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/7_j4lo.jpg" alt="Ù…Ø®Ù„ÙˆØ· Ú©Ù† ØµÙ†Ø¹ØªÛŒ">
+                <div class="price">Û±,Û·ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/6_9s0a.jpg" alt="سره جاروبرقی بوش" class="product-img">
-                <div class="product-title">سره جاروبرقی بوش</div>
-                <div class="price">۱۵۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ø³Ø±Ù‡ Ø¬Ø§Ø±ÙˆØ¨Ø±Ù‚ÛŒ Ø¨ÙˆØ´', 'https://s6.uupload.ir/files/6_9s0a.jpg', 'Ù‚ÛŒÙ…Øª Ø³Ø±Ù‡ Ø¬Ø§Ø±ÙˆØ¨Ø±Ù‚ÛŒ Ø¨Ø±Ù†Ø¯ Ø¨ÙˆØ´: Û±ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/6_9s0a.jpg" alt="Ø³Ø±Ù‡ Ø¬Ø§Ø±ÙˆØ¨Ø±Ù‚ÛŒ Ø¨ÙˆØ´">
+                <div class="price">Û±ÛµÛ°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/5_lnpt.jpg" alt="اسنک ساز CR-3022" class="product-img">
-                <div class="product-title">اسنک ساز CR-3022 (۶ عددی)</div>
-                <div class="price">۲,۶۲۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ø§Ø³Ù†Ú© Ø³Ø§Ø² CR-3022', 'https://s6.uupload.ir/files/5_lnpt.jpg', 'Ø§Ø³Ù†Ú© Ø³Ø§Ø² Ù…Ø¯Ù„ CR-3022 - Ø¯Ùˆ ØµÙØ­Ù‡ Ú¯Ø±ÛŒÙ„ Ø¯Ø§Ø±<br>Ú©Ø§Ø±ØªÙ† ÙˆÚ©ÛŒÙˆÙ… - Û¶ Ø¹Ø¯Ø¯ Ø¯Ø± Ú©Ø§Ø±ØªÙ†<br>Ù‚ÛŒÙ…Øª: Û²,Û¶Û²Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/5_lnpt.jpg" alt="Ø§Ø³Ù†Ú© Ø³Ø§Ø²">
+                <div class="price">Û²,Û¶Û²Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/4_wew.jpg" alt="اتو دستی کاراکال" class="product-img">
-                <div class="product-title">اتو دستی کاراکال CR-9045</div>
-                <div class="price">۱,۹۷۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ø§ØªÙˆ Ø¯Ø³ØªÛŒ Ú©Ø§Ø±Ø§Ú©Ø§Ù„ CR-9045', 'https://s6.uupload.ir/files/4_wew.jpg', 'Ø§ØªÙˆ Ø¯Ø³ØªÛŒ Ú©Ø§Ø±Ø§Ú©Ø§Ù„ Ù…Ø¯Ù„ CR-9045<br>Ú©Ø§Ø±ØªÙ† Ù…Ø§Ø¯Ø±<br>Ù‚ÛŒÙ…Øª: Û±,Û¹Û·Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/4_wew.jpg" alt="Ø§ØªÙˆ Ú©Ø§Ø±Ø§Ú©Ø§Ù„">
+                <div class="price">Û±,Û¹Û·Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/3_8dgq.jpg" alt="مخلوط کن CR-9045" class="product-img">
-                <div class="product-title">مخلوط کن CR-9045</div>
-                <div class="price">۱,۷۲۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ù…Ø®Ù„ÙˆØ· Ú©Ù† CR-9045', 'https://s6.uupload.ir/files/3_8dgq.jpg', 'Ù…Ø®Ù„ÙˆØ· Ú©Ù† Ù…Ø¯Ù„ CR-9045<br>Ú©Ø§Ø±ØªÙ† Ù…Ø§Ø¯Ø±<br>Ù‚ÛŒÙ…Øª: Û±,Û·Û²Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/3_8dgq.jpg" alt="Ù…Ø®Ù„ÙˆØ· Ú©Ù†">
+                <div class="price">Û±,Û·Û²Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://s6.uupload.ir/files/1_q6jz.jpg" alt="گوشت کوب برقی کاراکال" class="product-img">
-                <div class="product-title">گوشت کوب برقی CR-8046</div>
-                <div class="price">۱,۴۸۰,۰۰۰ تومان</div>
+            <div class="product-card" onclick="openModal('Ú¯ÙˆØ´Øª Ú©ÙˆØ¨ Ø¨Ø±Ù‚ÛŒ Ú©Ø§Ø±Ø§Ú©Ø§Ù„ CR-8046', 'https://s6.uupload.ir/files/1_q6jz.jpg', 'Ú¯ÙˆØ´Øª Ú©ÙˆØ¨ Ø¨Ø±Ù‚ÛŒ Ú©Ø§Ø±Ø§Ú©Ø§Ù„ Ù…Ø¯Ù„ CR-8046<br>Ú©Ø§Ø±ØªÙ† Ù…Ø§Ø¯Ø±<br>Ù‚ÛŒÙ…Øª: Û±,Û´Û¸Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†')">
+                <img src="https://s6.uupload.ir/files/1_q6jz.jpg" alt="Ú¯ÙˆØ´Øª Ú©ÙˆØ¨ Ø¨Ø±Ù‚ÛŒ">
+                <div class="price">Û±,Û´Û¸Û°,Û°Û°Û° ØªÙˆÙ…Ø§Ù†</div>
             </div>
 
         </div>
     </div>
 
-    <!-- دکمه‌های تماس و واتساپ ثابت -->
+    <!-- Ù…ÙˆØ¯Ø§Ù„ ØªÙ…Ø§Ù… ØµÙØ­Ù‡ -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">â†</button>
+            <img src="" alt="" class="modal-img" id="modalImg">
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <!-- Ø¯Ú©Ù…Ù‡â€ŒÙ‡Ø§ÛŒ ØªÙ…Ø§Ø³ Ùˆ ÙˆØ§ØªØ³Ø§Ù¾ -->
     <div class="floating-buttons">
+        <!-- Ø¢ÛŒÚ©ÙˆÙ† ØªÙ„ÙÙ† (Ù‡Ù…ÙˆÙ† Ù‚Ø¨Ù„ÛŒ) -->
         <a href="tel:+989129728044" class="float-btn">
-            <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="تماس">
+            <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="ØªÙ…Ø§Ø³">
         </a>
+        <!-- Ø¢ÛŒÚ©ÙˆÙ† ÙˆØ§ØªØ³Ø§Ù¾ Ø¬Ø¯ÛŒØ¯ - Ú©Ø§Ù…Ù„Ø§Ù‹ Ù¾Ø± Ø´Ø¯Ù‡ -->
         <a href="https://wa.me/989129728044" target="_blank" class="float-btn">
-            <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="واتساپ">
+            <img src="https://s6.uupload.ir/files/images_69gk.png" alt="ÙˆØ§ØªØ³Ø§Ù¾">
         </a>
     </div>
 
     <footer>
-        کلیه حقوق این سایت متعلق به فرزانه صالحی می‌باشد. © ۱۴۰۴
+        Ú©Ù„ÛŒÙ‡ Ø­Ù‚ÙˆÙ‚ Ø§ÛŒÙ† Ø³Ø§ÛŒØª Ù…ØªØ¹Ù„Ù‚ Ø¨Ù‡ ÙØ±Ø²Ø§Ù†Ù‡ ØµØ§Ù„Ø­ÛŒ Ù…ÛŒâ€ŒØ¨Ø§Ø´Ø¯.
     </footer>
 
     <script>
-        const themeToggle = document.getElementById('themeIcon');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            
-            if (body.classList.contains('dark-mode')) {
-                themeToggle.src = 'https://s6.uupload.ir/files/inshot_20251121_164428011_rdup.jpg'; // لامپ روشن
-            } else {
-                themeToggle.src = 'https://s6.uupload.ir/files/inshot_20251121_164428011_rdup.jpg'; // همان لامپ (می‌تونی عکس لامپ خاموش هم بذاری)
-            }
+        function openModal(title, imgSrc, info) {
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalInfo').innerHTML = '<h2>' + title + '</h2><p>' + info.replace(/<br>/g, '</p><p>') + '</p>';
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
         });
 
-        // ذخیره تم انتخابی کاربر
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-        }
+        const themeIcon = document.getElementById('themeIcon');
+        themeIcon.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeIcon.classList.toggle('on');
+        });
     </script>
 </body>
-</html>
+        </html>
