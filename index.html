@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="بازرگانی صالحی - فروش انواع قطعات یدکی لوازم خانگی برقی با بهترین قیمت و کیفیت اصلی">
+    <meta name="keywords" content="قطعات لوازم خانگی, سشوار, مگنترون, موتور خردکن, تیغه مخلوط کن, ترموستات, اتو, گوشت کوب برقی, بازرگانی صالحی">
+    <meta name="author" content="فرزانه صالحی">
+    <meta name="robots" content="index, follow">
+    <title>بازرگانی صالحی - فروش انواع قطعات لوازم خانگی برقی</title>
+    <link rel="icon" href="https://s6.uupload.ir/files/blue-favicon_5g9k.png" type="image/png">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #333;
+            transition: all 0.4s ease;
+            line-height: 1.6;
+        }
+        body.dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+        }
+        .subtitle {
+            font-size: 1.6rem;
+            opacity: 0.95;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.25);
+        }
+        body.dark .product-card {
+            background: #1e1e1e;
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 4px solid #6a11cb;
+        }
+        .price {
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6a11cb;
+            background: #f8f5ff;
+        }
+        body.dark .price {
+            background: #2a1b3d;
+            color: #bb86fc;
+        }
+
+        /* مودال تمام صفحه */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.97);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            max-width: 90%;
+            max-height: 95vh;
+            text-align: center;
+            position: relative;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(106,17,203,0.6);
+        }
+        .modal-info {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: white;
+            background: rgba(106,17,203,0.9);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+
+        /* دکمه‌های شناور */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            background: #6a11cb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.5);
+            transition: all 0.3s ease;
+            overflow: hidden; /* مهم برای پر کردن کامل */
+        }
+        .float-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(106, 17, 203, 0.7);
+        }
+        .float-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* باعث میشه تصویر کامل دایره رو پر کنه */
+        }
+
+        /* آیکون تغییر تم */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            cursor: pointer;
+        }
+        .theme-toggle img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(106,17,203,0.5);
+            transition: all 0.4s;
+        }
+        .theme-toggle img.on {
+            filter: brightness(1.8) drop-shadow(0 0 20px #fff);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+        body.dark footer { background: #000; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.3rem; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+            .float-btn { width: 55px; height: 55px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="theme-toggle">
+        <img src="https://s6.uupload.ir/files/inshot_20251121_164428011_rdup.jpg" alt="تغییر تم" id="themeIcon">
+    </div>
+
+    <header>
+        <h1>بازرگانی صالحی</h1>
+        <p class="subtitle">فروش انواع قطعات لوازم خانگی برقی</p>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+
+            <div class="product-card" onclick="openModal('سشوار', 'https://s6.uupload.ir/files/14_yw0l.jpg', 'قیمت سشوار: ۹۸۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/14_yw0l.jpg" alt="سشوار">
+                <div class="price">۹۸۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('موتور خردکن', 'https://s6.uupload.ir/files/15_n3sm.jpg', 'قیمت موتور خردکن: ۴۵۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/15_n3sm.jpg" alt="موتور خردکن">
+                <div class="price">۴۵۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('کلید استریکس', 'https://s6.uupload.ir/files/13_r3ud.jpg', 'قیمت کلید استریکس: ۲۰۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/13_r3ud.jpg" alt="کلید استریکس">
+                <div class="price">۲۰۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('ترموستات و کنتاکت استریکس', 'https://s6.uupload.ir/files/12_524c.jpg', 'قیمت ترموستات و کنتاکت استریکس: ۵۰۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/12_524c.jpg" alt="ترموستات استریکس">
+                <div class="price">۵۰۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('مگنترون اصلی پاناسونیک', 'https://s6.uupload.ir/files/11_d49l.jpg', 'قیمت مگنترون اصلی پاناسونیک: ۵,۸۰۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/11_d49l.jpg" alt="مگنترون پاناسونیک">
+                <div class="price">۵,۸۰۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('تیغه چهار پر', 'https://s6.uupload.ir/files/10_ql1v.jpg', 'قیمت تیغه چهار پر: ۱۳۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/10_ql1v.jpg" alt="تیغه چهار پر">
+                <div class="price">۱۳۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('باد جمع کن سشوار', 'https://s6.uupload.ir/files/9_q5xl.jpg', 'قیمت باد جمع کن سشوار: ۳۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/9_q5xl.jpg" alt="باد جمع کن سشوار">
+                <div class="price">۳۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('تیغه شش پر', 'https://s6.uupload.ir/files/8_uzl.jpg', 'قیمت تیغه شش پر: ۱۵۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/8_uzl.jpg" alt="تیغه شش پر">
+                <div class="price">۱۵۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('مخلوط کن صنعتی با دو پارچ', 'https://s6.uupload.ir/files/7_j4lo.jpg', 'مخلوط کن صنعتی با دو پارچ مجزا و موتور پرقدرت<br>قیمت: ۱,۷۵۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/7_j4lo.jpg" alt="مخلوط کن صنعتی">
+                <div class="price">۱,۷۵۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('سره جاروبرقی بوش', 'https://s6.uupload.ir/files/6_9s0a.jpg', 'قیمت سره جاروبرقی برند بوش: ۱۵۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/6_9s0a.jpg" alt="سره جاروبرقی بوش">
+                <div class="price">۱۵۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('اسنک ساز CR-3022', 'https://s6.uupload.ir/files/5_lnpt.jpg', 'اسنک ساز مدل CR-3022 - دو صفحه گریل دار<br>کارتن وکیوم - ۶ عدد در کارتن<br>قیمت: ۲,۶۲۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/5_lnpt.jpg" alt="اسنک ساز">
+                <div class="price">۲,۶۲۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('اتو دستی کاراکال CR-9045', 'https://s6.uupload.ir/files/4_wew.jpg', 'اتو دستی کاراکال مدل CR-9045<br>کارتن مادر<br>قیمت: ۱,۹۷۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/4_wew.jpg" alt="اتو کاراکال">
+                <div class="price">۱,۹۷۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('مخلوط کن CR-9045', 'https://s6.uupload.ir/files/3_8dgq.jpg', 'مخلوط کن مدل CR-9045<br>کارتن مادر<br>قیمت: ۱,۷۲۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/3_8dgq.jpg" alt="مخلوط کن">
+                <div class="price">۱,۷۲۰,۰۰۰ تومان</div>
+            </div>
+
+            <div class="product-card" onclick="openModal('گوشت کوب برقی کاراکال CR-8046', 'https://s6.uupload.ir/files/1_q6jz.jpg', 'گوشت کوب برقی کاراکال مدل CR-8046<br>کارتن مادر<br>قیمت: ۱,۴۸۰,۰۰۰ تومان')">
+                <img src="https://s6.uupload.ir/files/1_q6jz.jpg" alt="گوشت کوب برقی">
+                <div class="price">۱,۴۸۰,۰۰۰ تومان</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- مودال تمام صفحه -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">←</button>
+            <img src="" alt="" class="modal-img" id="modalImg">
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <!-- دکمه‌های تماس و واتساپ -->
+    <div class="floating-buttons">
+        <!-- آیکون تلفن (همون قبلی) -->
+        <a href="tel:+989129728044" class="float-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="تماس">
+        </a>
+        <!-- آیکون واتساپ جدید - کاملاً پر شده -->
+        <a href="https://wa.me/989129728044" target="_blank" class="float-btn">
+            <img src="https://s6.uupload.ir/files/images_69gk.png" alt="واتساپ">
+        </a>
+    </div>
+
+    <footer>
+        کلیه حقوق این سایت متعلق به فرزانه صالحی می‌باشد.
+    </footer>
+
+    <script>
+        function openModal(title, imgSrc, info) {
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalInfo').innerHTML = '<h2>' + title + '</h2><p>' + info.replace(/<br>/g, '</p><p>') + '</p>';
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        const themeIcon = document.getElementById('themeIcon');
+        themeIcon.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeIcon.classList.toggle('on');
+        });
+    </script>
+</body>
+</html>
