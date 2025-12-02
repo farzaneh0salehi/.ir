@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازرگانی صالحی - قطعات لوازم خانگی</title>
+    <link rel="icon" href="https://s6.uupload.ir/files/blue-favicon_5g9k.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        h1 { font-size: 2.8rem; }
+        .subtitle { font-size: 1.4rem; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        .search-container {
+            max-width: 700px;
+            margin: 30px auto;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 28px;
+            padding: 20px 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .product-card:hover { transform: translateY(-10px); }
+
+        .product-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .product-info { padding: 18px; }
+        .product-title { font-size: 1.25rem; font-weight: bold; color: #6a11cb; margin: 10px 0; }
+        .product-details { font-size: 0.95rem; color: #555; margin-bottom: 12px; }
+        .price { font-size: 1.45rem; font-weight: bold; color: #6a11cb; margin: 12px 0; }
+        .add-to-cart {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .add-to-cart:hover { background: #5510a8; }
+
+        /* سبد خرید شناور */
+        .cart-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 70px;
+            height: 70px;
+            background: #6a11cb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(106,17,203,0.7);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .cart-float:hover { transform: scale(1.2); }
+        .cart-float img { width: 42px; }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff3333;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* مودال‌ها */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff3333;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #eee;
+            text-align: right;
+        }
+        .cart-item strong { color: #6a11cb; font-size: 1.2rem; }
+        .remove-item {
+            background: #ff3333;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* صفحه پرداخت — دقیقاً مثل چینش اولیه */
+        .payment-box {
+            background: rgba(106,17,203,0.95);
+            padding: 35px 25px;
+            border-radius: 20px;
+            max-width: 460px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .payment-box h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .card-number {
+            font-size: 1.4rem;
+            direction: ltr;
+            background: white;
+            color: black;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 18px 0;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        #paymentAmountText {
+            color: white;
+            font-size: 1.9rem;
+            margin: 25px 0;
+            font-weight: bold;
+        }
+        .whatsapp-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 35px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .card-number { font-size: 1.3rem; }
+            #paymentAmountText { font-size: 1.7rem; }
+            .payment-box h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>بازرگانی صالحی</h1>
+        <p class="subtitle">فروش انواع قطعات و لوازم خانگی برقی با بهترین قیمت و کیفیت</p>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="جستجوی محصول ...">
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/14_yw0l.jpg" alt="سشوار" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">سشوار حرفه‌ای</div>
+                    <div class="product-details">سشوار با قدرت بالا و باد سرد</div>
+                    <div class="price">۹۸۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/15_n3sm.jpg" alt="موتور خردکن" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">موتور خردکن</div>
+                    <div class="product-details">موتور قدرتمند ۸۰۰ وات - اورجینال</div>
+                    <div class="price">۴۵۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/13_r3ud.jpg" alt="کلید استریکس" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">کلید استریکس</div>
+                    <div class="product-details">کلید اصلی کتری برقی استریکس</div>
+                    <div class="price">۲۰۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/12_524c.jpg" alt="ترموستات استریکس" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">ترموستات و کنتاکت استریکس</div>
+                    <div class="product-details">ست کامل ترموستات + کنتاکت</div>
+                    <div class="price">۵۰۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/11_d49l.jpg" alt="مگنترون پاناسونیک" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">مگنترون اصلی پاناسونیک</div>
+                    <div class="product-details">۱۰۰٪ اورجینال - مدل 2M244</div>
+                    <div class="price">۵,۸۰۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/10_ql1v.jpg" alt="تیغه چهار پر" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">تیغه چهار پر مخلوط‌کن</div>
+                    <div class="product-details">استیل ضدزنگ - بسیار تیز</div>
+                    <div class="price">۱۳۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/9_q5xl.jpg" alt="باد جمع کن سشوار" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">باد جمع کن سشوار</div>
+                    <div class="product-details">نازل متمرکز کننده باد</div>
+                    <div class="price">۳۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/8_uzl.jpg" alt="تیغه شش پر" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">تیغه شش پر مخلوط‌کن</div>
+                    <div class="product-details">استیل ضدزنگ - فوق‌العاده تیز</div>
+                    <div class="price">۱۵۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/7_j4lo.jpg" alt="مخلوط کن صنعتی" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">مخلوط کن صنعتی دو پارچ</div>
+                    <div class="product-details">موتور پرقدرت + دو پارچ مجزا</div>
+                    <div class="price">۱,۷۵۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/6_9s0a.jpg" alt="سره جاروبرقی بوش" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">سره جاروبرقی بوش</div>
+                    <div class="product-details">سره اصلی جاروبرقی بوش</div>
+                    <div class="price">۱۵۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/5_lnpt.jpg" alt="اسنک ساز CR-3022" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">اسنک ساز CR-3022</div>
+                    <div class="product-details">دو صفحه گریل - کارتن وکیوم</div>
+                    <div class="price">۲,۶۲۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/4_wew.jpg" alt="اتو کاراکال CR-9045" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">اتو دستی کاراکال CR-9045</div>
+                    <div class="product-details">اتو بخار حرفه‌ای - کارتن مادر</div>
+                    <div class="price">۱,۹۷۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/3_8dgq.jpg" alt="مخلوط کن CR-9045" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">مخلوط کن CR-9045</div>
+                    <div class="product-details">مخلوط کن حرفه‌ای - کارتن مادر</div>
+                    <div class="price">۱,۷۲۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://s6.uupload.ir/files/1_q6jz.jpg" alt="گوشت کوب برقی کاراکال" onclick="addToCart(this)">
+                <div class="product-info">
+                    <div class="product-title">گوشت کوب برقی کاراکال CR-8046</div>
+                    <div class="product-details">گوشت‌کوب چندکاره - کارتن مادر</div>
+                    <div class="price">۱,۴۸۰,۰۰۰ تومان</div>
+                    <button class="add-to-cart" onclick="addToCart(this.closest('.product-card').querySelector('img'))">افزودن به سبد</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- آیکون سبد خرید -->
+    <div class="cart-float" onclick="toggleCart()">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="سبد">
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <!-- سبد خرید -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="toggleCart()">×</button>
+            <h2 style="text-align:center;margin-bottom:25px;">سبد خرید شما</h2>
+            <div id="cartItems"></div>
+            <button class="checkout-btn" onclick="goToPayment()">پرداخت نهایی</button>
+        </div>
+    </div>
+
+    <!-- صفحه پرداخت -->
+    <div class="modal" id="paymentModal">
+        <div class="payment-box">
+            <h2>پرداخت نهایی سفارش</h2>
+            <p style="color:#fff;margin:15px 0;">لطفاً مبلغ زیر را به شماره کارت واریز کنید:</p>
+            <div class="card-number">6037998113772791</div>
+            <p style="color:#fff;margin:10px 0;">به نام: <strong>فرزانه صالحی</strong></p>
+            <h3 id="paymentAmountText" style="color:#fff;margin:25px 0;"></h3>
+            <p style="color:#fff;line-height:2;">
+                پس از پرداخت<br>
+                رسید را از طریق واتساپ<br>
+                ارسال کنید
+            </p>
+            <a href="https://wa.me/989129728044" class="whatsapp-link" target="_blank">
+                ارسال رسید از طریق واتساپ
+            </a>
+            <br><br>
+            <button onclick="document.getElementById('paymentModal').classList.remove('active')" style="background:#ff3333;padding:12px 25px;border:none;border-radius:10px;color:white;cursor:pointer;">
+                بستن
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(imgElement) {
+            const card = imgElement.closest('.product-card');
+            const title = card.querySelector('.product-title').innerText;
+            const details = card.querySelector('.product-details').innerText;
+
+            cart.push({ title, details });
+            updateCart();
+            alert(title + " به سبد خرید اضافه شد");
+        }
+
+        function updateCart() {
+            document.getElementById('cartCount').textContent = cart.length;
+            const itemsDiv = document.getElementById('cartItems');
+            itemsDiv.innerHTML = '';
+
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = '<p style="text-align:center;color:#999;padding:50px;">سبد خرید شما خالی است</p>';
+                return;
+            }
+
+            cart.forEach((item, i) => {
+                itemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.title}</strong><br>
+                            <small>${item.details}</small>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${i})">حذف</button>
+                    </div>`;
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+            updateCart();
+        }
+
+        function goToPayment() {
+            if (cart.length === 0) {
+                alert("سبد خرید شما خالی است!");
+                return;
+            }
+            const total = calculateTotal();
+            document.getElementById('paymentAmountText').textContent = total > 0 ? numberToPersianWords(total) : "";
+            toggleCart();
+            document.getElementById('paymentModal').classList.add('active');
+        }
+
+        function calculateTotal() {
+            const prices = [980000,450000,200000,500000,5800000,130000,30000,150000,1750000,150000,2620000,1970000,1720000,1480000];
+            let total = 0;
+            cart.forEach(item => {
+                const index = Array.from(document.querySelectorAll('.product-title')).findIndex(el => el.innerText === item.title);
+                if (index !== -1) total += prices[index];
+            });
+            return total;
+        }
+
+        function numberToPersianWords(num) {
+            if (num === 0) return "";
+            const ones = ["", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده", "یازده", "دوازده", "سیزده", "چهارده", "پانزده", "شانزده", "هفده", "هجده", "نوزده"];
+            const tens = ["", "", "بیست", "سی", "چهل", "پنجاه", "شصت", "هفتاد", "هشتاد", "نود"];
+            const hundreds = ["", "یکصد", "دویست", "سیصد", "چهارصد", "پانصد", "ششصد", "هفتصد", "هشتصد", "نهصد"];
+            const big = ["", "هزار", "میلیون", "میلیارد"];
+
+            let str = num.toString();
+            let result = "";
+            let part = 0;
+
+            while (str.length > 0) {
+                let chunk = str.slice(-3);
+                str = str.slice(0, -3);
+                if (chunk) {
+                    let n = parseInt(chunk);
+                    let chunkText = "";
+                    let h = Math.floor(n / 100);
+                    let t = Math.floor((n % 100) / 10);
+                    let o = n % 10;
+
+                    if (h > 0) chunkText += hundreds[h] + (n % 100 ? " و " : "");
+                    if (t === 1) chunkText += ones[10 + o];
+                    else {
+                        if (t > 1) chunkText += tens[t] + (o ? " و " : "");
+                        if (o > 0) chunkText += ones[o];
+                    }
+                    if (chunkText && part > 0) chunkText += " " + big[part];
+                    result = chunkText + (result ? " و " + result : "");
+                }
+                part++;
+            }
+            return result.trim();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const term = this.value.trim().toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
